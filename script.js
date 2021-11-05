@@ -3,7 +3,7 @@ function adder() {
     let answer = prompt('Put some number, please.');
     let number = 0;
     let result = 0;
-    if (isNaN(answer)) {
+    if (isNaN(answer) || answer == null || answer == '') {
         console.log(`'${answer}\' is not a number.`);
     } else {
         number = parseInt(answer);
@@ -16,10 +16,10 @@ function adder() {
     }
 }
 // 1.2
-function minOplus() {
+function minusOplus() {
     let answer = prompt('Put some number, please.');
     let number = 0;
-    if (isNaN(answer)) {
+    if (isNaN(answer) || answer == null || answer == '') {
         console.log(`'${answer}\' is not a number.`);
     } else {
         number = parseInt(answer);
@@ -33,66 +33,74 @@ function minOplus() {
     }
 }
 // 1.3
+function validator(strng, bln) {
+    do {
+        let prm = prompt(strng);
+        if (prm === "stop") {
+            return prm;
+        }
+        if (_NaNNullEmpty(prm)) {
+            console.log(`'${prm}\' is not a number. Let\'s try again. Or put \'stop\'`);
+            alert(`'${prm}\' is not a number. Let\'s try again. Or put \'stop\'`);
+        } else {
+            return prm;
+        }
+    } while (bln);
+}
+function _NaNNullEmpty(x) {
+    return isNaN(x) || x == null || x == '';
+}
 function solution() {
     let a, b, operation, answer, result;
-    stop: do {
-        first: while (true) {
-            a = prompt('Put the first number, please. Or put \'stop\'');
-            if (a === "stop") { break stop; }
-            if (isNaN(a)) {
-                console.log(`'${a}\' is not a number. Let\'s try again. Or put \'stop\'`);
-                alert(`'${a}\' is not a number. Let\'s try again. Or put \'stop\'`)
-                continue;
-            }
-            break first;
-        }
-        second: while (true) {
-            b = prompt('Put the second number, please. Or put \'stop\'');
-            if (b === "stop") { break stop; }
-            if (isNaN(b)) {
-                console.log(`'${b}\' is not a number. Let\'s try again. Or put \'stop\'`);
-                alert(`'${b}\' is not a number. Let\'s try again. Or put \'stop\'`);
-                continue;
-            }
-            break second;
-        }
-        oper: while (true) {
-            operation = prompt(
-                'Which Math operation do you want to do from \'+\', \'-\', \'*\', \'/\'. Or put \'stop\'');
-            switch (operation) {
-                case "stop":
-                    break stop;
-                case "+":
-                    result = parseInt(a) + parseInt(b);
-                    break oper;
-                case "-":
-                    result = parseInt(a) - parseInt(b);
-                    break oper;
-                case "*":
-                    result = parseInt(a) * parseInt(b);
-                    break oper;
-                case "/":
+    a = validator(
+        "Put the first number. Or put \'stop\'",
+        _NaNNullEmpty(a));
+    if (a === "stop") {
+        return;
+    }
+    b = validator(
+        "Put the second number, please. Or put \'stop\'",
+        _NaNNullEmpty(b));
+    if (b === "stop") {
+        return;
+    }
+    oper: while (true) {
+        operation = prompt(
+            'Which Math operation do you want to do from \'+\', \'-\', \'*\', \'/\'. Or put \'stop\'');
+        switch (operation) {
+            case "stop":
+                return;
+            case "+":
+                result = parseInt(a) + parseInt(b);
+                break oper;
+            case "-":
+                result = parseInt(a) - parseInt(b);
+                break oper;
+            case "*":
+                result = parseInt(a) * parseInt(b);
+                break oper;
+            case "/":
+                if (parseInt(b) === 0) {
+                    alert("You can\'t devide on zero!");
+                    continue oper;
+                } else {
                     result = parseInt(a) / parseInt(b);
                     break oper;
-                default:
-                    console.log(
-                        `${operation} is not Math operation from \'+\', \'-\', \'*\', \'/\'. Be more attention. Or put \'stop\'`);
-                    alert(`${operation} is not Math operation from \'+\', \'-\', \'*\', \'/\'. Be more attention. Or put \'stop\'`);
-                    continue oper;
-            }
+                }
+            default:
+                console.log(
+                    `${operation} is not Math operation from \'+\', \'-\', \'*\', \'/\'. Be more attention. Or put \'stop\'`);
+                alert(`${operation} is not Math operation from \'+\', \'-\', \'*\', \'/\'. Be more attention. Or put \'stop\'`);
+                continue oper;
         }
-        solut: while (true) {
-            answer = prompt(`So it\'s solution time! ${a}${operation}${b} = ... Or put \'stop\'`);
-            if (answer === "stop") { break stop; }
-            if (isNaN(answer) || answer != result) {
-                console.log(`'${answer}\' is bad idea. Let\'s try again!`);
-                alert(`'${answer}\' is bad idea. Let\'s try again! Or put \'stop\'`);
-                continue solut;
-            }
-            alert('Correct! Go to start.')
-            break solut;
-        }
-    } while (true);
+    }
+    do {
+        answer = validator(
+            `So it\'s solution time! ${a}${operation}${b} = ... Or put \'stop\'`,
+            _NaNNullEmpty(answer));
+        if (answer === "stop") { return; }
+    } while (answer != result);
+    alert(answer);
 }
 // main
 solution();
