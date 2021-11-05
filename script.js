@@ -1,34 +1,47 @@
 // 1.1
 function adder() {
-    let answer = prompt('Put some number, please.');
-    let number = 0;
-    let result = 0;
-    if (isNaN(answer) || answer == null || answer == '') {
-        console.log(`'${answer}\' is not a number.`);
-    } else {
-        number = parseInt(answer);
-        answer = '';
-        for (let index = 1; index < number; index++) {
-            answer += `${index}+`;
-            result += index;
+    while (true) {
+        let answer = prompt('Put some number, please.');
+        let number = 0;
+        let result = 0;
+        if (isNaN(answer) || answer == null || answer == '') {
+            console.log(`'${answer}\' is not a number.`);
+            alert(`'${answer}\' is not a number.`);
+            continue;
+        } else {
+            number = parseInt(answer);
+            answer = '';
+            for (let index = 1; index < number; index++) {
+                answer += `${index}+`;
+                result += index;
+            }
+            console.log(`${answer + number}=${result + number}`);
+            alert(`${answer + number}=${result + number}`);
+            break;
         }
-        console.log(`${answer + number}=${result + number}`)
     }
 }
 // 1.2
 function minusOplus() {
-    let answer = prompt('Put some number, please.');
-    let number = 0;
-    if (isNaN(answer) || answer == null || answer == '') {
-        console.log(`'${answer}\' is not a number.`);
-    } else {
-        number = parseInt(answer);
-        if (number > 0) {
-            console.log(`Number ${number} is positive.`);
-        } else if (number < 0) {
-            console.log(`Number ${number} is negative.`);
+    while (true) {
+        let answer = prompt('Put some number, please.');
+        let number = 0;
+        if (isNaN(answer) || answer == null || answer == '') {
+            console.log(`'${answer}\' is not a number.`);
+            continue;
         } else {
-            console.log(`Number ${number} is 0.`);
+            number = parseInt(answer);
+            if (number > 0) {
+                console.log(`Number ${number} is positive.`);
+                alert(`Number ${number} is positive.`);
+            } else if (number < 0) {
+                console.log(`Number ${number} is negative.`);
+                alert(`Number ${number} is negative.`);
+            } else {
+                console.log(`Number ${number} is 0.`);
+                alert(`Number ${number} is 0.`);
+            }
+            break;
         }
     }
 }
@@ -103,14 +116,7 @@ function solution() {
     alert(answer);
 }
 // main
+adder();
+minusOplus();
 solution();
-// adder();
-// adder();
-// minOplus();
-// minOplus();
-// minOplus();
-// try{
-// }
-// catch (exception){
-//     console.log(`${answer} is not a number.`);
-// }
+
