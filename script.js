@@ -118,25 +118,25 @@ function solution() {
 // 1.4
 function authorization(standard) {
     let b = true;
-    do{
-    let key = prompt("Please, enter your password.")
-    switch (key) {
-        case `${standard}`:
-            console.log("You have been authorized.");
-            alert("You have been authorized.");
-            b=!b;
-            break;
-        case "admin":
-            console.log("You have been authorized like \'admin\'.");
-            alert("You have been authorized like \'admin\'.");
-            b=!b;
-            break;
-        default:
-            console.log("Incorrect password!");
-            alert("Incorrect password!");
-            break;
-    }
-} while(b);
+    do {
+        let key = prompt("Please, enter your password.")
+        switch (key) {
+            case `${standard}`:
+                console.log("You have been authorized.");
+                alert("You have been authorized.");
+                b = !b;
+                break;
+            case "admin":
+                console.log("You have been authorized like \'admin\'.");
+                alert("You have been authorized like \'admin\'.");
+                b = !b;
+                break;
+            default:
+                console.log("Incorrect password!");
+                alert("Incorrect password!");
+                break;
+        }
+    } while (b);
 }
 
 // main
