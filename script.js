@@ -138,10 +138,24 @@ function authorization(standard) {
         }
     } while (b);
 }
-
+// 1.5
+function fibonachi(number) {
+    let temp1 = 0;
+    let temp2 = 1;
+    let strng = `0, 1`;
+    for (let i = 2; i < number; i++) {
+        let next = temp1 + temp2;
+        strng += `, ${next}`;
+        temp1 = temp2;
+        temp2 = next;
+    }
+    console.log(strng);
+    alert(strng);
+}
 // main
-// adder();
-// minusOplus();
-// solution();
+adder();
+minusOplus();
+solution();
 authorization(1323);
+fibonachi(10);
 
