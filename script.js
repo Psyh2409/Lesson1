@@ -4,7 +4,7 @@ function adder() {
         let answer = prompt('Put some number, please.');
         let number = 0;
         let result = 0;
-        if (isNaN(answer) || answer == null || answer == '') {
+        if (isNaN(answer) || !answer) {
             console.log(`'${answer}\' is not a number.`);
             alert(`'${answer}\' is not a number.`);
             continue;
@@ -26,7 +26,7 @@ function minusOplus() {
     while (true) {
         let answer = prompt('Put some number, please.');
         let number = 0;
-        if (isNaN(answer) || answer == null || answer == '') {
+        if (isNaN(answer) || !answer) {
             console.log(`'${answer}\' is not a number.`);
             continue;
         } else {
@@ -61,7 +61,7 @@ function validator(strng, bln) {
     } while (bln);
 }
 function _NaNNullEmpty(x) {
-    return isNaN(x) || x == null || x == '';
+    return isNaN(x) || !x;
 }
 function solution() {
     let answer=8*9, result;
@@ -111,9 +111,9 @@ function fibonachi(number) {
     alert(strng);
 }
 // main
-// adder();
-// minusOplus();
+adder();
+minusOplus();
 solution();
-// authorization(1323);
-// fibonachi(10);
+authorization(1323);
+fibonachi(10);
 
